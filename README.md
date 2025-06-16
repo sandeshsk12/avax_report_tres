@@ -1,4 +1,4 @@
-# Avax reportData Analysis
+# Avax report Data Analysis
 
 A Streamlit application for analyzing and fixing transaction data using Flipside Crypto API.
 
