@@ -2,6 +2,9 @@
 import streamlit as st
 import pandas as pd
 from flipside import Flipside
+import streamlit as st
+
+api_key = st.secrets["API_KEY"]
 
 ###############################################################################
 # ---------------------------  CONFIG & HELPERS  -----------------------------#
@@ -143,7 +146,7 @@ transactions_with_issues = issue_hashes.copy()
 if st.button("Fix it", type="primary"):
     st.write("🔄 Fetching replacement rows from Flipside…")
     sql_condition = " OR ".join([f"tx_hash ILIKE '%{pattern}%'" for pattern in transactions_with_issues])
-    flipside = Flipside("6c5cc32c-8977-419e-a340-baa528b65139", "https://api-v2.flipsidecrypto.xyz")
+    flipside = Flipside(api_key, "https://api-v2.flipsidecrypto.xyz")
 
     sql = """
             with 
